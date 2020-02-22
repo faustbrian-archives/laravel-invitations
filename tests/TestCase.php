@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace KodeKeep\Invitations\Tests;
 
-use KodeKeep\Invitations\InvitationsServiceProvider;
+use KodeKeep\Invitations\Providers\InvitationsServiceProvider;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 
 abstract class TestCase extends OrchestraTestCase

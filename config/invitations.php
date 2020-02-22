@@ -11,6 +11,22 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
- return [
-    //
+use KodeKeep\Invitations\Models\Invitation;
+
+return [
+
+    'models' => [
+
+        'invitation' => Invitation::class,
+
+    ],
+
+    'tables' => [
+
+        'invitations' => 'invitations',
+
+        'model_has_invitations' => 'model_has_invitations',
+
+    ],
+
 ];

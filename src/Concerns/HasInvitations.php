@@ -13,13 +13,13 @@ declare(strict_types=1);
 
 namespace KodeKeep\Invitations\Concerns;
 
-use KodeKeep\Invitations\Models\Invitation;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Illuminate\Support\Facades\Config;
 
 trait HasInvitations
 {
     public function invitation(): MorphOne
     {
-        return $this->morphOne(Invitation::class, 'claimable');
+        return $this->morphOne(Config::get('invitations.models.invitation'), 'claimable');
     }
 }

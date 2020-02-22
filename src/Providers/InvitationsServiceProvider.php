@@ -11,7 +11,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace KodeKeep\Invitations;
+namespace KodeKeep\Invitations\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -19,20 +19,20 @@ class InvitationsServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/invitations.php', 'invitations');
+        $this->mergeConfigFrom(__DIR__.'/../../config/invitations.php', 'invitations');
     }
 
     public function boot(): void
     {
         if ($this->app->runningInConsole()) {
-            $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+            $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
 
             $this->publishes([
-                __DIR__.'/../config/invitations.php' => $this->app->configPath('invitations.php'),
+                __DIR__.'/../../config/invitations.php' => $this->app->configPath('invitations.php'),
             ], 'config');
 
             $this->publishes([
-                __DIR__.'/../database/migrations/' => $this->app->databasePath('migrations'),
+                __DIR__.'/../../database/migrations/' => $this->app->databasePath('migrations'),
             ], 'migrations');
         }
     }

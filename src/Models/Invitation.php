@@ -16,6 +16,7 @@ namespace KodeKeep\Invitations\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Support\Facades\Config;
 
 class Invitation extends Model
 {
@@ -50,11 +51,16 @@ class Invitation extends Model
 
     public static function findInviteByCode(string $code): self
     {
-        return static::whereCode('code')->first();
+        return static::whereCode($code)->first();
     }
 
     public static function findValidInviteByCode(string $code): self
     {
         return static::whereCode($code)->whereNull('claimed_at')->firstOrFail();
+    }
+
+    public function getTable(): string
+    {
+        return Config::get('invitations.tables.invitations');
     }
 }
