@@ -25,8 +25,6 @@ class InvitationsServiceProvider extends ServiceProvider
     public function boot(): void
     {
         if ($this->app->runningInConsole()) {
-            $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
-
             $this->publishes([
                 __DIR__.'/../../config/invitations.php' => $this->app->configPath('invitations.php'),
             ], 'config');
